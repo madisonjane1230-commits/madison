@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CRIMSON | Graphic Design &amp; Creative Studio</title>
-<meta name="description" content="CRIMSON is a graphic design and creative studio. Branding, packaging, social media, advertising, clothing design and motion graphics for brands that want to be recognized.">
+<title>CRIMSON STUDIO | Graphic Design &amp; Branding</title>
+<meta name="description" content="CRIMSON STUDIO is a graphic design and creative studio. Branding, packaging, social media, advertising, clothing design and motion graphics for brands that want to be recognized.">
 <meta name="theme-color" content="#0A0A0C">
-<meta property="og:title" content="CRIMSON | Graphic Design &amp; Creative Studio">
+<meta property="og:title" content="CRIMSON STUDIO | Graphic Design &amp; Branding">
 <meta property="og:description" content="We turn ideas into visual experiences.">
 <meta property="og:type" content="website">
 <!-- DEPLOY STEP: add absolute og:image and og:url with the live address once the site is online, for example
@@ -54,7 +54,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 14px;background:linear-gradient(rgba(10,10,12,.78),rgba(10,10,12,.42));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:800;letter-spacing:.12em;font-size:.95rem}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:800;letter-spacing:.12em;font-size:.92rem;white-space:nowrap}
+@media (max-width:420px){.brand{font-size:.8rem;gap:9px;letter-spacing:.09em}.brand img{width:28px}}
 .brand img{width:34px;height:auto}
 .nav-links{display:flex;gap:28px;font-size:.9rem;list-style:none}
 .nav-links a{text-decoration:none;color:var(--text-secondary);transition:color .35s var(--ease)}
@@ -70,7 +71,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .btn{min-height:44px}
 
 /* ---------- HERO (scrub) ---------- */
-.hero-scrub{position:relative;height:700vh}
+.hero-scrub{position:relative;height:430vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#050507}
 .stage video,.stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .stage .poster{background-size:cover;background-position:center}
@@ -113,8 +114,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* ---------- HERO (static: phones, portrait tablets, reduced motion) ---------- */
 .hero-static{display:none;position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:#050507 center 78%/cover no-repeat}
-.hero-static::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,.82) 0%,rgba(5,5,10,.55) 42%,rgba(5,5,10,0) 78%)}
-.hero-static .in{position:relative;padding:calc(96px + env(safe-area-inset-top,0px)) clamp(20px,6vw,64px) 40px;max-width:720px;text-shadow:var(--tshadow)}
+.hero-static .mv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;opacity:0;transition:opacity .9s var(--ease);z-index:0;pointer-events:none}
+.hero-static .mv.on{opacity:1}
+.hero-static::before{z-index:1;content:"";position:absolute;inset:0;background:linear-gradient(rgba(5,5,10,.82) 0%,rgba(5,5,10,.55) 42%,rgba(5,5,10,0) 78%)}
+.hero-static .in{position:relative;z-index:2;padding:calc(96px + env(safe-area-inset-top,0px)) clamp(20px,6vw,64px) 40px;max-width:720px;text-shadow:var(--tshadow)}
 .hero-static h1{font-size:clamp(2.1rem,9vw,3.6rem)}
 .hero-static .sub{margin:16px 0 26px;max-width:36ch}
 @media (max-width:720px),(orientation:portrait) and (max-width:1024px),(orientation:portrait) and (pointer:coarse),(orientation:landscape) and (pointer:coarse) and (max-height:560px),(prefers-reduced-motion:reduce){
@@ -122,7 +125,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .hero-static{display:block}
 }
 
-@media (max-width:720px){.hero-static{background-size:auto 58%;background-position:50% 100%}.hero-static::before{background:linear-gradient(rgba(5,5,10,.94) 0%,rgba(5,5,10,.82) 42%,rgba(5,5,10,0) 74%)}}
+@media (max-width:720px){.hero-static{background-size:auto 58%;background-position:50% 100%}.hero-static .mv{top:auto;height:58%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%);mask-image:linear-gradient(to bottom,transparent 0,#000 24%)}.hero-static::before{background:linear-gradient(rgba(5,5,10,.94) 0%,rgba(5,5,10,.82) 42%,rgba(5,5,10,0) 74%)}}
 
 /* ---------- PAGE ---------- */
 .page{position:relative}
@@ -184,15 +187,17 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .chip{font-family:var(--body);font-size:.95rem;color:var(--text-primary);background:transparent;border:1px solid var(--line-strong);padding:11px 22px;border-radius:999px;cursor:pointer;transition:transform .4s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease)}
 .chip:hover{transform:translateY(-2px);border-color:var(--text-primary)}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
-.poster-card{position:relative;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto;border-radius:6px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px var(--line)}
-.face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7%;padding:10%;opacity:0;transition:opacity .9s var(--ease)}
+.poster-card{container-type:inline-size;position:relative;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto;border-radius:6px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px var(--line)}
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8%;opacity:0;transition:opacity .9s var(--ease)}
 .face.on{opacity:1}
-.face img{width:62%;height:auto}
-.face .t{font-family:var(--display);font-weight:800;font-size:clamp(1.05rem,2vw,1.5rem);letter-spacing:.02em;text-align:center}
+.lockup{width:70%;display:flex;flex-direction:column;align-items:center}
+.lockup img{width:100%;height:auto}
+.studio{display:flex;align-items:center;justify-content:center;gap:2.6cqw;margin-top:2.4cqw;font-family:var(--display);font-weight:800;font-size:14px;font-size:3.3cqw;letter-spacing:.34em;text-indent:.34em;line-height:1}
+.studio i{flex:none;width:2.7cqw;height:2.7cqw;min-width:7px;min-height:7px;border-radius:50%;background:var(--dot)}
 .face .s{position:absolute;left:6%;bottom:4%;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
-.f-crimson{background:#C8102E;color:#E9E2D8}
-.f-bone{background:#E9E2D8;color:#0A0A0C}
-.f-night{background:#16131A;color:#E9E2D8}
+.f-crimson{background:#C8102E;color:#E9E2D8;--dot:#E9E2D8}
+.f-bone{background:#E9E2D8;color:#0A0A0C;--dot:#C8102E}
+.f-night{background:#16131A;color:#E9E2D8;--dot:#C8102E}
 .poster-card .reg{position:absolute;right:6%;top:4%;width:22px;height:22px;opacity:.8;z-index:2}
 
 /* 04 selected work */
@@ -270,7 +275,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <div class="env" aria-hidden="true" id="env"></div>
 
 <header class="nav">
-  <a class="brand" href="#top" aria-label="CRIMSON, back to the top"><img src="assets/logo-mark.png" alt="" width="34" height="31"><span>CRIMSON</span></a>
+  <a class="brand" href="#top" aria-label="CRIMSON STUDIO, back to the top"><img src="assets/logo-mark.png" alt="" width="34" height="31"><span>CRIMSON STUDIO</span></a>
   <ul class="nav-links">
     <li><a href="#make">What we make</a></li>
     <li><a href="#how">How we work</a></li>
@@ -283,9 +288,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <span id="top"></span>
 
   <!-- static hero: phones, portrait tablets, reduced motion -->
-  <section class="hero-static" id="heroStatic" aria-label="CRIMSON introduction">
+  <section class="hero-static" id="heroStatic" aria-label="CRIMSON STUDIO introduction">
+    <video class="mv" id="mv" muted playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
     <div class="in">
-      <p class="mono" style="margin-bottom:14px">Graphic Design &amp; Creative Studio</p>
+      <p class="mono" style="margin-bottom:14px">Graphic design for brands</p>
       <h1>We turn ideas into visual experiences.</h1>
       <p class="sub">Branding, packaging, social, ads, clothing and motion design for brands that want to be recognized.</p>
       <a class="btn" href="#start">Start a Project <span class="arr" aria-hidden="true">&rarr;</span></a>
@@ -293,22 +299,22 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   </section>
 
   <!-- scrub hero -->
-  <section class="hero-scrub" id="hero" aria-label="CRIMSON introduction">
+  <section class="hero-scrub" id="hero" aria-label="CRIMSON STUDIO introduction">
     <div class="stage" id="stage">
       <div class="poster" id="poster"></div>
       <video id="hv" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
       <div class="scrim"></div>
 
-      <div class="band l fx-drift" data-a="0" data-b="0.24" data-first="1">
-        <div class="band-in"><p class="mono">Graphic Design &amp; Creative Studio</p><h1 data-split="drift">We turn ideas into visual experiences.</h1></div>
+      <div class="band l fx-drift" data-a="0" data-b="0.25" data-first="1">
+        <div class="band-in"><p class="mono">Graphic design for brands</p><h1 data-split="drift">We turn ideas into visual experiences.</h1></div>
       </div>
-      <div class="band r fx-snap" data-a="0.28" data-b="0.5">
+      <div class="band r fx-snap" data-a="0.27" data-b="0.5">
         <div class="band-in"><h2 data-split="snap">Design that gives brands something to be recognized by.</h2></div>
       </div>
-      <div class="band l fx-blur" data-a="0.54" data-b="0.76">
+      <div class="band l fx-blur" data-a="0.52" data-b="0.75">
         <div class="band-in"><p class="big h2like" data-split="blur" style="font-family:var(--display);font-weight:800;line-height:1.04">No templates. No guessing. A look made only for you.</p></div>
       </div>
-      <div class="band c fx-rise" data-a="0.8" data-b="1" data-last="1">
+      <div class="band c fx-rise" data-a="0.78" data-b="1" data-last="1">
         <div class="band-in">
           <h2 data-split="rise">Tell us what you need. | We start there.</h2>
           <div class="btn-row after b"><a class="btn" href="#start">Start a Project <span class="arr" aria-hidden="true">&rarr;</span></a></div>
@@ -381,11 +387,11 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           </div>
         </div>
         <div class="rv" style="--i:2">
-          <div class="poster-card" id="posterCard" role="img" aria-label="A sample poster showing the CRIMSON mark in the chosen look">
+          <div class="poster-card" id="posterCard" role="img" aria-label="A sample poster showing the CRIMSON STUDIO logo in the chosen look">
             <svg class="reg" viewBox="0 0 24 24" fill="none" stroke="#E9E2D8" stroke-width="1.2" aria-hidden="true" style="mix-blend-mode:difference"><circle cx="12" cy="12" r="6"/><path d="M12 0v24M0 12h24"/></svg>
-            <div class="face f-crimson on" data-face="crimson"><img src="assets/logo-mark-bone.png" alt="" width="700" height="629" loading="lazy"><p class="t">Your brand, recognized.</p><span class="s">Sample poster</span></div>
-            <div class="face f-bone" data-face="bone"><img src="assets/logo-mark.png" alt="" width="700" height="629" loading="lazy"><p class="t">Your brand, recognized.</p><span class="s">Sample poster</span></div>
-            <div class="face f-night" data-face="night"><img src="assets/logo-mark.png" alt="" width="700" height="629" loading="lazy"><p class="t">Your brand, recognized.</p><span class="s">Sample poster</span></div>
+            <div class="face f-crimson on" data-face="crimson"><div class="lockup"><img src="assets/lockup-bone.png" alt="" width="1000" height="881" loading="lazy"><p class="studio"><i></i><span>STUDIO</span><i></i></p></div><span class="s">Sample poster</span></div>
+            <div class="face f-bone" data-face="bone"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1000" height="881" loading="lazy"><p class="studio"><i></i><span>STUDIO</span><i></i></p></div><span class="s">Sample poster</span></div>
+            <div class="face f-night" data-face="night"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1000" height="881" loading="lazy"><p class="studio"><i></i><span>STUDIO</span><i></i></p></div><span class="s">Sample poster</span></div>
           </div>
         </div>
       </div>
@@ -449,13 +455,13 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 <footer class="foot">
   <div class="foot-in">
-    <a class="brand" href="#top" aria-label="CRIMSON, back to the top"><img src="assets/logo-mark.png" alt="" width="42" height="38"><span>CRIMSON</span></a>
+    <a class="brand" href="#top" aria-label="CRIMSON STUDIO, back to the top"><img src="assets/logo-mark.png" alt="" width="42" height="38"><span>CRIMSON STUDIO</span></a>
     <ul>
       <li><a href="https://www.instagram.com/Crimson_wrld" rel="noopener" target="_blank">Instagram</a></li>
       <li><a href="https://www.facebook.com/Crimson_wrld" rel="noopener" target="_blank">Facebook</a></li>
       <li><a href="https://www.tiktok.com/@Crimson_wrld" rel="noopener" target="_blank">TikTok</a></li>
     </ul>
-    <small>CRIMSON &middot; Graphic Design &amp; Creative Studio</small>
+    <small>CRIMSON STUDIO &middot; Graphic design and creative work</small>
   </div>
 </footer>
 
@@ -570,7 +576,7 @@ let target = 0, shown = 0, rafId = null, lastTick = 0, heroOnScreen = true;
 function tick(now) {
   const dt = Math.min(100, now - (lastTick || now));
   lastTick = now;
-  const k = 0.16;
+  const k = 0.24;
   shown += (target - shown) * (1 - Math.pow(1 - k, dt / 16.667));
   if (Math.abs(target - shown) < 0.0005) { shown = target; rafId = null; lastTick = 0; }
   else rafId = requestAnimationFrame(tick);
@@ -642,12 +648,28 @@ function disableScrub() {
   removeEventListener('scroll', onScroll);
   if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
 }
+const mv = $('#mv');
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)');
+let mvStarted = false;
+function startPhoneVideo() {
+  if (REDUCED.matches || (navigator.connection && navigator.connection.saveData)) return;
+  if (!mvStarted) {
+    mvStarted = true;
+    mv.addEventListener('playing', () => mv.classList.add('on'));
+    mv.src = 'assets/hero-scrub.mp4';
+    // if the phone blocks autoplay (low power mode), the finished still stays; a first touch tries once more
+    addEventListener('touchstart', () => { if (mv.paused && !mv.ended) mv.play().catch(() => {}); }, { once: true, passive: true });
+  } else { try { mv.currentTime = 0; } catch (e) {} }
+  const pr = mv.play(); if (pr && pr.catch) pr.catch(() => {});
+}
+function stopPhoneVideo() { if (mvStarted) mv.pause(); }
 function applyHeroMode() {
   const isStatic = GATES.some(q => matchMedia(q).matches);
   if (isStatic) {
     disableScrub();
     if (!staticSet) { staticSet = true; $('#heroStatic').style.backgroundImage = "url('assets/hero-ending.jpg')"; }
-  } else enableScrub();
+    if (REDUCED.matches) stopPhoneVideo(); else startPhoneVideo();
+  } else { stopPhoneVideo(); enableScrub(); }
 }
 const MQLS = GATES.map(q => matchMedia(q));
 MQLS.forEach(m => m.addEventListener('change', applyHeroMode));
