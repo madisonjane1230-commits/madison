@@ -54,8 +54,12 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 14px;background:linear-gradient(rgba(10,10,12,.78),rgba(10,10,12,.42));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:800;letter-spacing:.12em;font-size:.92rem;white-space:nowrap}
-@media (max-width:420px){.brand{font-size:.8rem;gap:9px;letter-spacing:.09em}.brand img{width:28px}}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:800;white-space:nowrap}
+.brand .wm{display:flex;flex-direction:column;align-items:center;line-height:1}
+.brand .wm b{font-weight:800;font-size:1.02rem;letter-spacing:.12em;text-indent:.12em}
+.brand .wm em{display:flex;align-items:center;gap:.7em;margin-top:.5em;font-style:normal;font-weight:800;font-size:.6rem;letter-spacing:.3em;text-indent:.3em}
+.brand .wm em i{flex:none;width:.7em;height:.7em;border-radius:50%;background:var(--accent)}
+@media (max-width:420px){.brand{gap:9px}.brand img{width:28px}.brand .wm b{font-size:.9rem}.brand .wm em{font-size:.55rem}}
 .brand img{width:34px;height:auto}
 .nav-links{display:flex;gap:28px;font-size:.9rem;list-style:none}
 .nav-links a{text-decoration:none;color:var(--text-secondary);transition:color .35s var(--ease)}
@@ -190,14 +194,17 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .poster-card{container-type:inline-size;position:relative;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto;border-radius:6px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px var(--line)}
 .face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8%;opacity:0;transition:opacity .9s var(--ease)}
 .face.on{opacity:1}
-.lockup{width:70%;display:flex;flex-direction:column;align-items:center}
-.lockup img{width:100%;height:auto}
-.studio{display:flex;align-items:center;justify-content:center;gap:2.6cqw;margin-top:2.4cqw;font-family:var(--display);font-weight:800;font-size:14px;font-size:3.3cqw;letter-spacing:.34em;text-indent:.34em;line-height:1}
-.studio i{flex:none;width:2.7cqw;height:2.7cqw;min-width:7px;min-height:7px;border-radius:50%;background:var(--dot)}
+.lockup{position:relative;width:78%;aspect-ratio:4047/4528;container-type:inline-size}
+.lockup img{position:absolute;left:0;top:0;width:100%;height:auto}
+.lockup i{position:absolute;top:97.31%;width:3.12%;aspect-ratio:126/121;border-radius:50%;background:var(--dot)}
+.lockup .d1{left:33.43%}
+.lockup .d2{left:58.04%}
+.lockup .st{position:absolute;left:47.31%;top:98.64%;width:21.5%;height:auto;transform:translate(-50%,-50%);overflow:visible;color:var(--st)}
+.lockup .st text{font-family:var(--display);font-weight:800;font-size:170px;fill:currentColor}
 .face .s{position:absolute;left:6%;bottom:4%;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
-.f-crimson{background:#C8102E;color:#E9E2D8;--dot:#E9E2D8}
-.f-bone{background:#E9E2D8;color:#0A0A0C;--dot:#C8102E}
-.f-night{background:#16131A;color:#E9E2D8;--dot:#C8102E}
+.f-crimson{background:#C8102E;color:#E9E2D8;--dot:#E9E2D8;--st:#E9E2D8}
+.f-bone{background:#E9E2D8;color:#0A0A0C;--dot:#C8102E;--st:#C8102E}
+.f-night{background:#16131A;color:#E9E2D8;--dot:#C8102E;--st:#E9E2D8}
 .poster-card .reg{position:absolute;right:6%;top:4%;width:22px;height:22px;opacity:.8;z-index:2}
 
 /* 04 selected work */
@@ -241,6 +248,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .foot{padding:56px clamp(20px,6vw,96px) calc(48px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
 .foot-in{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:28px 48px;align-items:center;justify-content:space-between}
 .foot .brand img{width:42px}
+.foot a.brand{color:var(--text-primary)}
 .foot ul{display:flex;gap:26px;list-style:none;flex-wrap:wrap}
 .foot a{text-decoration:none;color:var(--text-secondary);transition:color .3s var(--ease)}
 .foot a:hover{color:var(--text-primary)}
@@ -275,7 +283,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <div class="env" aria-hidden="true" id="env"></div>
 
 <header class="nav">
-  <a class="brand" href="#top" aria-label="CRIMSON STUDIO, back to the top"><img src="assets/logo-mark.png" alt="" width="34" height="31"><span>CRIMSON STUDIO</span></a>
+  <a class="brand" href="#top" aria-label="CRIMSON STUDIO, back to the top"><img src="assets/logo-mark.png" alt="" width="34" height="31"><span class="wm"><b>CRIMSON</b><em><i></i>STUDIO<i></i></em></span></a>
   <ul class="nav-links">
     <li><a href="#make">What we make</a></li>
     <li><a href="#how">How we work</a></li>
@@ -389,9 +397,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <div class="rv" style="--i:2">
           <div class="poster-card" id="posterCard" role="img" aria-label="A sample poster showing the CRIMSON STUDIO logo in the chosen look">
             <svg class="reg" viewBox="0 0 24 24" fill="none" stroke="#E9E2D8" stroke-width="1.2" aria-hidden="true" style="mix-blend-mode:difference"><circle cx="12" cy="12" r="6"/><path d="M12 0v24M0 12h24"/></svg>
-            <div class="face f-crimson on" data-face="crimson"><div class="lockup"><img src="assets/lockup-bone.png" alt="" width="1000" height="881" loading="lazy"><p class="studio"><i></i><span>STUDIO</span><i></i></p></div><span class="s">Sample poster</span></div>
-            <div class="face f-bone" data-face="bone"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1000" height="881" loading="lazy"><p class="studio"><i></i><span>STUDIO</span><i></i></p></div><span class="s">Sample poster</span></div>
-            <div class="face f-night" data-face="night"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1000" height="881" loading="lazy"><p class="studio"><i></i><span>STUDIO</span><i></i></p></div><span class="s">Sample poster</span></div>
+            <div class="face f-crimson on" data-face="crimson"><div class="lockup"><img src="assets/lockup-bone.png" alt="" width="1100" height="1231" loading="lazy"><i class="d1"></i><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg><i class="d2"></i></div><span class="s">Sample poster</span></div>
+            <div class="face f-bone" data-face="bone"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1100" height="1231" loading="lazy"><i class="d1"></i><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg><i class="d2"></i></div><span class="s">Sample poster</span></div>
+            <div class="face f-night" data-face="night"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1100" height="1231" loading="lazy"><i class="d1"></i><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg><i class="d2"></i></div><span class="s">Sample poster</span></div>
           </div>
         </div>
       </div>
@@ -455,13 +463,13 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 <footer class="foot">
   <div class="foot-in">
-    <a class="brand" href="#top" aria-label="CRIMSON STUDIO, back to the top"><img src="assets/logo-mark.png" alt="" width="42" height="38"><span>CRIMSON STUDIO</span></a>
+    <a class="brand" href="#top" aria-label="CRIMSON STUDIO, back to the top"><img src="assets/logo-mark.png" alt="" width="42" height="38"><span class="wm"><b>CRIMSON</b><em><i></i>STUDIO<i></i></em></span></a>
     <ul>
       <li><a href="https://www.instagram.com/Crimson_wrld" rel="noopener" target="_blank">Instagram</a></li>
       <li><a href="https://www.facebook.com/Crimson_wrld" rel="noopener" target="_blank">Facebook</a></li>
       <li><a href="https://www.tiktok.com/@Crimson_wrld" rel="noopener" target="_blank">TikTok</a></li>
     </ul>
-    <small>CRIMSON STUDIO &middot; Graphic design and creative work</small>
+    <small>Graphic design and creative work.</small>
   </div>
 </footer>
 
