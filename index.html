@@ -186,26 +186,22 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .step p{color:var(--text-secondary);max-width:34ch}
 
 /* 03 try a look */
-.look-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,96px);align-items:center}
+.look-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(40px,7vw,120px);align-items:center}
+.look-wrap>*{min-width:0}
+.look-wrap>div:last-child{justify-self:end;width:100%}
+#look h2{max-width:14ch}
 .chips{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
 .chip{font-family:var(--body);font-size:.95rem;color:var(--text-primary);background:transparent;border:1px solid var(--line-strong);padding:11px 22px;border-radius:999px;cursor:pointer;transition:transform .4s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease)}
 .chip:hover{transform:translateY(-2px);border-color:var(--text-primary)}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
-.poster-card{container-type:inline-size;position:relative;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto;border-radius:6px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px var(--line)}
-.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8%;opacity:0;transition:opacity .9s var(--ease)}
-.face.on{opacity:1}
-.lockup{position:relative;width:78%;aspect-ratio:4047/4528;container-type:inline-size}
-.lockup img{position:absolute;left:0;top:0;width:100%;height:auto}
-.lockup i{position:absolute;top:97.31%;width:3.12%;aspect-ratio:126/121;border-radius:50%;background:var(--dot)}
-.lockup .d1{left:33.43%}
-.lockup .d2{left:58.04%}
-.lockup .st{position:absolute;left:47.31%;top:98.64%;width:21.5%;height:auto;transform:translate(-50%,-50%);overflow:visible;color:var(--st)}
-.lockup .st text{font-family:var(--display);font-weight:800;font-size:170px;fill:currentColor}
-.face .s{position:absolute;left:6%;bottom:4%;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
-.f-crimson{background:#C8102E;color:#E9E2D8;--dot:#E9E2D8;--st:#E9E2D8}
-.f-bone{background:#E9E2D8;color:#0A0A0C;--dot:#C8102E;--st:#C8102E}
-.f-night{background:#16131A;color:#E9E2D8;--dot:#C8102E;--st:#E9E2D8}
-.poster-card .reg{position:absolute;right:6%;top:4%;width:22px;height:22px;opacity:.8;z-index:2}
+.poster-card{position:relative;width:100%;max-width:340px;padding:clamp(8px,1.6vw,14px);border-radius:6px;background:var(--mat,#C8102E);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.poster-card[data-look="crimson"]{--mat:#C8102E}
+.poster-card[data-look="bone"]{--mat:#E9E2D8}
+.poster-card[data-look="night"]{--mat:#16131A}
+.pf{position:relative}
+.poster-card img{display:block;width:100%;height:auto;border-radius:2px}
+.pf .st{position:absolute;left:47.46%;top:84.68%;width:17.9%;height:auto;transform:translate(-50%,-50%);overflow:visible}
+.pf .st text{font-family:var(--display);font-weight:800;font-size:170px;fill:#C8102E}
 
 /* 04 selected work */
 .tiles{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
@@ -387,19 +383,16 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <div>
           <p class="mono kicker rv" style="--i:0">03 / Try a look</p>
           <h2 class="rv" style="--i:1">Change everything. Stay recognizable.</h2>
-          <p class="lede rv" style="--i:2">One strong mark, worn many ways. Pick a look and watch the same mark carry it.</p>
-          <div class="chips rv" style="--i:3" role="group" aria-label="Choose a look for the sample poster">
+          <p class="lede rv" style="--i:2">One strong mark that holds up on any background. Pick one and see.</p>
+          <div class="chips rv" style="--i:3" role="group" aria-label="Choose a background color for the logo">
             <button class="chip" type="button" data-look="crimson" aria-pressed="true">Crimson</button>
             <button class="chip" type="button" data-look="bone" aria-pressed="false">Bone</button>
             <button class="chip" type="button" data-look="night" aria-pressed="false">Midnight</button>
           </div>
         </div>
         <div class="rv" style="--i:2">
-          <div class="poster-card" id="posterCard" role="img" aria-label="A sample poster showing the CRIMSON STUDIO logo in the chosen look">
-            <svg class="reg" viewBox="0 0 24 24" fill="none" stroke="#E9E2D8" stroke-width="1.2" aria-hidden="true" style="mix-blend-mode:difference"><circle cx="12" cy="12" r="6"/><path d="M12 0v24M0 12h24"/></svg>
-            <div class="face f-crimson on" data-face="crimson"><div class="lockup"><img src="assets/lockup-bone.png" alt="" width="1100" height="1231" loading="lazy"><i class="d1"></i><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg><i class="d2"></i></div><span class="s">Sample poster</span></div>
-            <div class="face f-bone" data-face="bone"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1100" height="1231" loading="lazy"><i class="d1"></i><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg><i class="d2"></i></div><span class="s">Sample poster</span></div>
-            <div class="face f-night" data-face="night"><div class="lockup"><img src="assets/lockup-red.png" alt="" width="1100" height="1231" loading="lazy"><i class="d1"></i><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg><i class="d2"></i></div><span class="s">Sample poster</span></div>
+          <div class="poster-card" id="posterCard" data-look="crimson">
+            <div class="pf"><img src="assets/logo-original.png" alt="CRIMSON STUDIO logo: the red C mark, the word CRIMSON, and STUDIO between two dots" width="1000" height="1288" loading="lazy"><svg class="st" viewBox="0 0 1000 200" aria-hidden="true"><text x="500" y="152" text-anchor="middle" textLength="760" lengthAdjust="spacingAndGlyphs">STUDIO</text></svg></div>
           </div>
         </div>
       </div>
@@ -705,7 +698,7 @@ $$('.sect').forEach(s => secIO.observe(s));
 const chips = $$('.chip');
 chips.forEach(ch => ch.addEventListener('click', () => {
   chips.forEach(c => c.setAttribute('aria-pressed', c === ch ? 'true' : 'false'));
-  $$('.face').forEach(f => f.classList.toggle('on', f.dataset.face === ch.dataset.look));
+  $('#posterCard').dataset.look = ch.dataset.look;
 }));
 
 /* ---- the brief form ---- */
